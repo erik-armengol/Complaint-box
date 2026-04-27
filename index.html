@@ -290,51 +290,50 @@
         <!-- Form Page -->
         <div id="formPage" class="form-page">
             <div class="header">
-                <h1 class="title">Official Grievance Portal</h1>
-                <p class="subtitle">For the most important person in my life 💕</p>
+                <h1 class="title">Official Bumble Grievance Portal</h1>
+                <p class="subtitle">For the most important customer 💕</p>
             </div>
             
-            <form id="grievanceForm">
-                <div class="form-group">
-                    <label class="label" for="grievanceTitle">📝 What's the issue, gorgeous?</label>
-                    <input type="text" id="grievanceTitle" class="input" placeholder="e.g., Vilikkam ennu paranjatt vilichilla..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="label" for="grievanceDetails">📋 Tell me all about it</label>
-                    <textarea id="grievanceDetails" class="textarea" placeholder="Entha ennu vivarichu ezhuthu kutti 👀" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label class="label" for="currentMood">😊 Current Mood Level</label>
-                    <select id="currentMood" class="select" required>
-                        <option value="">Select your vibe...</option>
-                        <option value="😤" class="emoji-option">😤 Ennod mindanda</option>
-                        <option value="😒" class="emoji-option">😒 Okay annu(ultimate pucham)</option>
-                        <option value="🙄" class="emoji-option">🙄 ehhhhh</option>
-                        <option value="😠" class="emoji-option">😠 Muralikrishnaaaa</option>
-                        <option value="🤬" class="emoji-option">🤬 Njan vechatt povum</option>
-                        <option value="😢" class="emoji-option">😢 Vishamaayi</option>
-                        <option value="😭" class="emoji-option">😭 Arum mind cheyyanilla</option>
-                        <option value="🤨" class="emoji-option">🤨 Enth thenga venelum kaanikk</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="label" for="desiredSolution">💡 Preferred Resolution</label>
-                    <select id="desiredSolution" class="select" required>
-                        <option value="">What would make this better?</option>
-                        <option value="sincere_apology">Onnu vilichal mathi</option>
-                        <option value="flowers">Kettirunnal mathi. Upadeshikkana</option>
-                        <option value="favorite_food">Njan kuttam parayana aale neeyum kuttam parayanam</option>
-                        <option value="movie_night">Gift vedichu thannal mathi</option>
-                        <option value="shopping_trip">Video call cheythal mathi</option>
-                        <option value="date_night">Korachu nerathekk enne vilikkanda</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="submit-btn">Submit Official Complaint 📨</button>
-            </form>
+    <form id="grievanceForm" name="complaints" method="POST" data-netlify="true">
+        <div class="form-group">
+            <label class="label" for="grievanceTitle">📝 What's the issue, gorgeous?</label>
+            <input type="hidden" id="grievanceTitle" name="title" class="input" placeholder="e.g., Said you would call but didn’t..." required>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="grievanceDetails">📋 Tell me all about it</label>
+            <textarea id="grievanceDetails" name="details" class="textarea" placeholder="Write down exactly what happened, dear 👀" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="currentMood">😊 Current Mood Level</label>
+            <select id="currentMood" name="mood" class="select" required>
+                <option value="">Select your vibe...</option>
+                <option value="😤" class="emoji-option">😤 Don’t talk to me</option>
+                <option value="😒" class="emoji-option">😒 It’s okay, apparently</option>
+                <option value="🙄" class="emoji-option">🙄 Ughhh</option>
+                <option value="🤬" class="emoji-option">🤬 I’m hanging up</option>
+                <option value="😢" class="emoji-option">😢 I’m hurt</option>
+                <option value="😭" class="emoji-option">😭 Nobody cares about me</option>
+                <option value="🤨" class="emoji-option">🤨 Do whatever nonsense you want</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="desiredSolution">💡 Preferred Resolution</label>
+            <select id="desiredSolution" name="solution" class="select" required>
+                <option value="">What would make this better?</option>
+                <option value="sincere_apology">Just call me once</option>
+                <option value="flowers">Just listen. Don’t lecture me</option>
+                <option value="favorite_food">You also have to blame the person I’m blaming</option>
+                <option value="movie_night">Just buy me a gift</option>
+                <option value="shopping_trip">Just video call me</option>
+                <option value="date_night">Don’t call me for a little while</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit Official Complaint 📨</button>
+    </form>
         </div>
 
         <!-- Results Page -->
@@ -377,8 +376,8 @@
     </div>
     <script type="module">
     // Import Firebase modules
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    // import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
     // Your Firebase config
     const firebaseConfig = {
@@ -391,8 +390,8 @@
     };
 
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app); // ✅ Correct modular usage
+    //const app = initializeApp(firebaseConfig);
+    //const database = getDatabase(app); // ✅ Correct modular usage
 
     // Handle form submission
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
@@ -425,16 +424,16 @@
 
         // Responses mapping
         const responses = {
-        'sincere_apology': "Avan enthayalum vilikkkumttaaa. 🥺",
-        'flowers': "Avan kettirunnolum. Upadeshikkan thodangyal onnu ormipichal mathi. 🌹💸",
-        'favorite_food': "Avanu pande avare ishttolla 🍕❤️",
-        'movie_night': "Enthayalum vangichu thannirikkum(Vishwasikk) 🎬🍿",
-        'shopping_trip': "Veettil ninnu porathu erangeettu cheyyum sure 🛍️💳",
-        'date_night': "Illa vilikkanilla. Nee happy aayitt irikkumbo vilikkuuuu 🥂✨"
+        'sincere_apology': "He’ll definitely call, okay. 🥺",
+        'flowers': "He’ll listen quietly. If he starts lecturing, just remind him once. 🌹💸",
+        'favorite_food': "He never liked them anyway. 🍕❤️",
+        'movie_night': "He’ll definitely buy it for you. Trust me. 🎬🍿",
+        'shopping_trip': "He’ll do it once he leaves the house, for sure. 🛍️💳",
+        'date_night': "No, he won’t call. You call when you’re happy again. 🥂✨"
         };
 
         // Set result text based on selected solution
-        const resultText = responses[solution] || "Your grievance has been filed with the Department of Boyfriend Accountability. Justice will be served! ⚖️💕";
+        const resultText = responses[solution] || "Your grievance has been filed with the Department of Bumble Accountability. Justice will be served! ⚖️💕";
 
         // Generate case number
         const caseNumber = 'GF-' + Date.now().toString().slice(-6);
