@@ -395,12 +395,12 @@
     //const database = getDatabase(app); // ✅ Correct modular usage
 
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
-        const desiredSolution = document.getElementById("desiredSolution");
+        const desiredSolution = document.getElementById("desiredSolution").value;
 
         if (desiredSolution.value === "sincere_apology") {
             e.preventDefault();
             alert("Sorry, Salt and pepper is not available right now. Please choose another resolution.");
-            return;
+            return false;
         }
 
         // Do nothing here. Let the form submit normally to FormSubmit.
