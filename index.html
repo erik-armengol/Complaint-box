@@ -392,8 +392,20 @@
     //const app = initializeApp(firebaseConfig);
     //const database = getDatabase(app); // ✅ Correct modular usage
 
-    // Handle form submission
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
+        const desiredSolution = document.getElementById("desiredSolution");
+
+        if (desiredSolution.value === "sincere_apology") {
+            e.preventDefault();
+            alert("Sorry, Salt and pepper is not available right now. Please choose another resolution.");
+            return;
+        }
+
+        // Do nothing here. Let the form submit normally to FormSubmit.
+    });
+
+     // Handle form submission
+    <!-- document.getElementById('grievanceForm').addEventListener('submit', function (e) {
         e.preventDefault();
 
         const desiredSolution = document.getElementById("desiredSolution");
@@ -458,7 +470,7 @@
 
         // Scroll to top
         window.scrollTo(0, 0);
-    });
+    }); -->
 
     // Function to go back to form
     function goBack() {
