@@ -314,10 +314,7 @@
                 <option value="😤" class="emoji-option">😤 Don’t talk to me</option>
                 <option value="😒" class="emoji-option">😒 It’s okay, apparently</option>
                 <option value="🙄" class="emoji-option">🙄 Ughhh</option>
-                <option value="🤬" class="emoji-option">🤬 I’m hanging up</option>
-                <option value="😢" class="emoji-option">😢 I’m hurt</option>
-                <option value="😭" class="emoji-option">😭 Nobody cares about me</option>
-                <option value="🤨" class="emoji-option">🤨 Do whatever nonsense you want</option>
+                <option value="😭" class="emoji-option">😭 It's not a fair deal</option>
             </select>
         </div>
         
@@ -325,11 +322,10 @@
             <label class="label" for="desiredSolution">💡 Preferred Resolution</label>
             <select id="desiredSolution" name="solution" class="select" required>
                 <option value="">What would make this better?</option>
-                <option value="sincere_apology">Salt and pepper now! 🤬</option>
-                <option value="movie_night">Invite me to a good wine place</option>
-                <option value="date_night">Invite me to a dishwasher</option>
-                <option value="shopping_trip">Just process my order already and shut up</option>
-                
+                <option value="salt_pepper">Salt and pepper now! 🤬</option>
+                <option value="date_night">Invite me to a good wine place</option>
+                <option value="movie_night">Invite me to a movie night</option>
+                <option value="bring_the_man">Just bring me my handsome blonde man order and shut up</option>
             </select>
         </div>
         
@@ -397,7 +393,7 @@
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
         const desiredSolution = document.getElementById("desiredSolution");
 
-        if (desiredSolution.value === "sincere_apology") {
+        if (desiredSolution.value === "salt_pepper") {
             e.preventDefault();
             alert("Sorry, Salt and pepper is not available right now. Please choose another resolution.");
             return false;
