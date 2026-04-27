@@ -323,12 +323,11 @@
             <label class="label" for="desiredSolution">💡 Preferred Resolution</label>
             <select id="desiredSolution" name="solution" class="select" required>
                 <option value="">What would make this better?</option>
-                <option value="sincere_apology">Just call me once</option>
-                <option value="flowers">Just listen. Don’t lecture me</option>
-                <option value="favorite_food">You also have to blame the person I’m blaming</option>
-                <option value="movie_night">Just buy me a gift</option>
-                <option value="shopping_trip">Just video call me</option>
-                <option value="date_night">Don’t call me for a little while</option>
+                <option value="sincere_apology">Salt and pepper now! 🤬</option>
+                <option value="movie_night">Invite me to a good wine place</option>
+                <option value="date_night">Invite me to a dishwasher</option>
+                <option value="shopping_trip">Just process my order already and shut up</option>
+                
             </select>
         </div>
         
@@ -396,6 +395,13 @@
     // Handle form submission
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
         e.preventDefault();
+
+        const desiredSolution = document.getElementById("desiredSolution");
+
+        if (desiredSolution.value === "sincere_apology") {
+            alert("Sorry, Salt and pepper is not available right now. Please choose another resolution.");
+            return;
+        }
 
         // Get form values
         const title = document.getElementById('grievanceTitle').value;
