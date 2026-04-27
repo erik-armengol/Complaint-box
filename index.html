@@ -299,7 +299,7 @@
         <input type="hidden" name="subject" value="New Bumble complaint submitted">
         <div class="form-group">
             <label class="label" for="grievanceTitle">📝 What's the issue, gorgeous?</label>
-            <input type="hidden" id="grievanceTitle" name="title" class="input" placeholder="e.g., Said you would call but didn’t..." required>
+            <input type="text" id="grievanceTitle" name="title" class="input" placeholder="e.g., Said you would call but didn’t..." required>
         </div>
         
         <div class="form-group">
@@ -395,7 +395,7 @@
     //const database = getDatabase(app); // ✅ Correct modular usage
 
     document.getElementById('grievanceForm').addEventListener('submit', function (e) {
-        const desiredSolution = document.getElementById("desiredSolution").value;
+        const desiredSolution = document.getElementById("desiredSolution");
 
         if (desiredSolution.value === "sincere_apology") {
             e.preventDefault();
@@ -405,74 +405,6 @@
 
         // Do nothing here. Let the form submit normally to FormSubmit.
     });
-
-     // Handle form submission
-    <!-- document.getElementById('grievanceForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const desiredSolution = document.getElementById("desiredSolution");
-
-        if (desiredSolution.value === "sincere_apology") {
-            alert("Sorry, Salt and pepper is not available right now. Please choose another resolution.");
-            return;
-        }
-
-        // Get form values
-        const title = document.getElementById('grievanceTitle').value;
-        const details = document.getElementById('grievanceDetails').value;
-        const mood = document.getElementById('currentMood').value;
-        const solution = document.getElementById('desiredSolution').value;
-
-        // Save data to Firebase Realtime Database
-        push(ref(database, "messages"), {
-        complaintTitle: title,
-        complaintDetails: details,
-        complaintMood: mood,
-        complaintSolution: solution,
-        complaintFiled:new Date().toLocaleString()
-        })
-        .then(() => {
-         
-        })
-        .catch((error) => {
-        alert("Error: " + error.message);
-        });
-
-        // Get display text for selected mood and solution
-        const solutionText = document.getElementById('desiredSolution').selectedOptions[0].text;
-        const moodText = document.getElementById('currentMood').selectedOptions[0].text;
-
-        // Responses mapping
-        const responses = {
-        'sincere_apology': "He’ll definitely call, okay. 🥺",
-        'flowers': "He’ll listen quietly. If he starts lecturing, just remind him once. 🌹💸",
-        'favorite_food': "He never liked them anyway. 🍕❤️",
-        'movie_night': "He’ll definitely buy it for you. Trust me. 🎬🍿",
-        'shopping_trip': "He’ll do it once he leaves the house, for sure. 🛍️💳",
-        'date_night': "No, he won’t call. You call when you’re happy again. 🥂✨"
-        };
-
-        // Set result text based on selected solution
-        const resultText = responses[solution] || "Your grievance has been filed with the Department of Bumble Accountability. Justice will be served! ⚖️💕";
-
-        // Generate case number
-        const caseNumber = 'GF-' + Date.now().toString().slice(-6);
-
-        // Display results
-        document.getElementById('resultMessage').textContent = resultText;
-        document.getElementById('displayTitle').textContent = title;
-        document.getElementById('displayMood').textContent = moodText;
-        document.getElementById('displaySolution').textContent = solutionText;
-        document.getElementById('displayDate').textContent = new Date().toLocaleString();
-        document.getElementById('displayCase').textContent = caseNumber;
-
-        // Show result page, hide form
-        document.getElementById('formPage').classList.add('hidden');
-        document.getElementById('resultPage').classList.add('active');
-
-        // Scroll to top
-        window.scrollTo(0, 0);
-    }); -->
 
     // Function to go back to form
     function goBack() {
